@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import CustomerComponent from './customers-component'
-import SearchComponent from './search-component'
-import CustomerFormComponent from './customer-form-component'
+import CustomerComponent from './components/customers-component'
+import SearchComponent from './components/search-component'
+import CustomerFormComponent from './'
 import './App.css'
 
 export default class App extends Component {
