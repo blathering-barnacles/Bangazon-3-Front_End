@@ -77,23 +77,29 @@ if(this.state.newProgramButton === false && this.state.newProgramForm === false)
 
 if(this.state.newProgramButton && this.state.newProgramForm) {
 
-  newProgramForm = (<NewProgramForm className="newProgramForm"
-    create={this.props.create}
+  newProgramForm = (
+  <div className="newProgramForm" >
+  <NewProgramForm
+    createNewProgram={this.props.createNewProgram}
     formDestroyer={this.formDestroyer}
-    />)
+    />
+    </div>)
 } else {
   newProgramForm = null
 }
 
 if(this.state.editProgramButton && this.state.editProgramForm) {
 
-  editForm = (<EditProgramForm
-    edit={this.props.edit}
+  editForm = (
+  <div className="newProgramForm">
+  <EditProgramForm
+    editThisProgram={this.props.editThisProgram}
     formDestroyer={this.formDestroyer}
     editFormSummoner={this.editFormSummoner}
     selectedProgram={this.state.selectedProgram}
     updateState={this.updateState}
-  />)
+  />
+  </div>)
 
 } else {
   editForm = null
@@ -105,15 +111,16 @@ return(
   <h1 className="trainingProgramsTitle" >Training Programs</h1>
   {/* <button onClick={this.consoleLog}>Console Log</button> */}
 
-  <TrainingProgramItem
-  trainingPrograms={this.props.trainingPrograms}
-  create={this.props.create}
-  editFormSummoner={this.editFormSummoner}
-  />
-
-  {newProgramButton}
   {newProgramForm}
   {editForm}
+  {newProgramButton}
+  <TrainingProgramItem
+  trainingPrograms={this.props.trainingPrograms}
+  createNewProgram={this.props.createNewProgram}
+  editFormSummoner={this.editFormSummoner}
+  deleteThisProgram={this.props.deleteThisProgram}
+  />
+
 
 
 </React.Fragment>

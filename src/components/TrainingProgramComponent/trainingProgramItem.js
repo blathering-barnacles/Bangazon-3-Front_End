@@ -6,7 +6,6 @@ import './index.css'
 export default class TrainingProgramItem extends Component {
 
 
-
   render(){
 
 
@@ -14,7 +13,7 @@ export default class TrainingProgramItem extends Component {
       return(
         <div key={program.id} className="program">
           <div className="entryTitle">
-          <p className="programEntry">{program.name} <button onClick={() => {this.props.editFormSummoner(program)}}>Edit</button></p>
+          <p className="programEntry">{program.name} <button onClick={() => {this.props.editFormSummoner(program)}}>Edit</button> <button onClick={() => {this.props.deleteThisProgram('trainingPrograms', program.id)}}>X</button></p>
           </div>
           <div className="entryBody">
           <p>Start Date: </p>
