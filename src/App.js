@@ -15,8 +15,7 @@ export default class App extends Component {
     products: [],
     orders: [],
     paymentTypes: [],
-    productTypes: [],
-    apiUrl: "http://localhost:8000/api/v1/"
+    productTypes: []
   }
 
   getAll = (resource) => {
@@ -49,6 +48,8 @@ export default class App extends Component {
 
   render() {
 
+  render() {
+
     return (
       <React.Fragment>
         <h1>Bangazon!</h1>
@@ -63,5 +64,6 @@ export default class App extends Component {
         />
       </React.Fragment>
     )
+
+
   }
-}
