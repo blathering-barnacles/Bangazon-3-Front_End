@@ -1,68 +1,68 @@
 import React, { Component } from 'react';
-import OrderComponent from './order/order-component'
-import DepartmentComponent from './department/department-component'
-import DepartmentFormComponent from './department/department-form-component'
+import OrderComponent from './components/order/order-component'
+import DepartmentComponent from './components/department/department-component'
+import DepartmentFormComponent from './components/department/department-form-component'
 // import './App.css';
+import APIManager from './modules/APIManager';
+import Employee from './components/employee/employee-component'
 
 export default class App extends Component {
 
-    state = {
-        orders: [],
-        departments: [],
-        apiUrl: 'http://127.0.0.1:8000/api/v1/'
-      }
+  state = {
+    employees: [],
+    departments: [],
+    computers: [],
+    trainingPrograms: [],
+    customers: [],
+    products: [],
+    orders: [],
+    paymentTypes: [],
+    productTypes: []
+  }
 
+  getAll = (resource) => {
+    APIManager.getAll(resource)
+      .then(data => this.setState({ [resource]: data }))
+  }
 
-    setOrderState = (orders) => this.setState({orders})
+  setOrderState = (orders) => this.setState({orders})
 
-    create = (resource, newObj) => {
+  create = (resource, newObj) => {
     let formData = new FormData()
     for (let key in newObj) {
         formData.append(key, newObj[key])
     }
 
-    fetch(`${this.state.apiUrl}${resource}/`, {
-        method: 'POST',
-        body: formData
-    })
-    .then( newData => newData.json())
-    .then( newData => {
-    //   console.log("added?", newData)
-        this.getAll(resource)
-    })
-    }
+  fetch(`${this.state.apiUrl}${resource}/`, {
+      method: 'POST',
+      body: formData
+  })
+  .then( newData => newData.json())
+  .then( newData => {
+  //   console.log("added?", newData)
+      this.getAll(resource)
+  })
+  }
 
-    delete = (resource, evt) => {
-    fetch(`${this.state.apiUrl}${resource}/${evt.target.id}`,{
-        method: `DELETE`
-    }).then(() => this.getAll(resource))
-    }
-
-    // TODO: This API logic should end up in a manager of some sort
-    getAll = (resource, keyword=null) => {
-    let url = `${this.state.apiUrl}${resource}/`
-    if (keyword)
-        url += keyword
-
-    fetch(url)
-    .then( response => response.json())
-    .then( data => {
-    //   console.log("movies list", data)
-        this.setState({[resource]: data})
-    })
-    .catch(err => console.log("Oops!", err))
-    }
+delete = (resource, evt) => {
+  fetch(`${this.state.apiUrl}${resource}/${evt.target.id}`,{
+      method: `DELETE`
+  }).then(() => this.getAll(resource))
+  }
 
 
-    render(){
 
-        return(
-            <>
+
+  render(){
+
+    return(
+      <>
             <h1>Bangazon!</h1>
+            <Employee getAll={this.getAll} employees={this.state.employees} />
             <OrderComponent orders={this.state.orders} getAll={this.getAll} delete={this.delete}/>
             <DepartmentComponent orders={this.state.departments} getAll={this.getAll} delete={this.delete}/>
             <DepartmentFormComponent create={this.create} />
             </>
         )
     }
-}
+  }
