@@ -3,7 +3,7 @@ const apiUrl = 'http://127.0.0.1:8000/api/v1/'
 class APIManager {
 
 
-  getAll = (resource) => {
+  getAll = (resource, keyword=null) => {
     let url = `${apiUrl}${resource}/`
 
     return fetch(url)

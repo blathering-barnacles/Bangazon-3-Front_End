@@ -15,7 +15,7 @@ state = {
 }
 
 componentDidMount() {
-this.props.getTrainingPrograms("trainingPrograms")
+this.props.getAll("trainingPrograms")
 
 }
 
