@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import OrderComponent from './components/order/order-component'
 import DepartmentComponent from './components/department/department-component'
 import DepartmentFormComponent from './components/department/department-form-component'
+=======
+import OrderComponent from './order/order-component'
+>>>>>>> parent of 162c5a6... commit before checking pr
 // import './App.css';
 import APIManager from './modules/APIManager';
 import Employee from './components/employee/employee-component'
 
 export default class App extends Component {
 
+<<<<<<< HEAD
   state = {
     employees: [],
     departments: [],
@@ -19,6 +24,12 @@ export default class App extends Component {
     paymentTypes: [],
     productTypes: []
   }
+=======
+    state = {
+        orders: [],
+        apiUrl: 'http://127.0.0.1:8000/api/v1/'
+      }
+>>>>>>> parent of 162c5a6... commit before checking pr
 
   getAll = (resource) => {
     APIManager.getAll(resource)
@@ -60,8 +71,6 @@ delete = (resource, evt) => {
             <h1>Bangazon!</h1>
             <Employee getAll={this.getAll} employees={this.state.employees} />
             <OrderComponent orders={this.state.orders} getAll={this.getAll} delete={this.delete}/>
-            <DepartmentComponent orders={this.state.departments} getAll={this.getAll} delete={this.delete}/>
-            <DepartmentFormComponent create={this.create} />
             </>
         )
     }
