@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import OrderComponent from './order/order-component'
+import DepartmentComponent from './department/department-component'
+import DepartmentFormComponent from './department/department-form-component'
 // import './App.css';
 
 export default class App extends Component {
 
     state = {
         orders: [],
+        departments: [],
         apiUrl: 'http://127.0.0.1:8000/api/v1/'
       }
 
@@ -57,6 +60,8 @@ export default class App extends Component {
             <>
             <h1>Bangazon!</h1>
             <OrderComponent orders={this.state.orders} getAll={this.getAll} delete={this.delete}/>
+            <DepartmentComponent orders={this.state.departments} getAll={this.getAll} delete={this.delete}/>
+            <DepartmentFormComponent create={this.create} />
             </>
         )
     }

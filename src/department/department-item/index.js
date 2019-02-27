@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 
-export default class OrderItem extends Component {
+export default class DepartmentItem extends Component {
 
     state = {
         buyer: {},
