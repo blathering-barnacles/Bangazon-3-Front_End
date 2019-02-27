@@ -11,7 +11,7 @@ class APIManager {
     .catch(err => console.log("oops!", err))
   }
 
-  getSingle = (resource, id, apiUrl, stateToSet) => {
+  getSingle = (resource, id, stateToSet) => {
     let url = `${apiUrl}${resource}/${id}`
     fetch(url)
     .then(response => response.json())

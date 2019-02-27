@@ -10,7 +10,6 @@ class Employee extends Component {
     console.log(this.props.employees)
   }
 
-
   render() {
     return (
       <div>
@@ -31,7 +30,6 @@ class Employee extends Component {
       </div>
     )
   }
-
 
 }
 
