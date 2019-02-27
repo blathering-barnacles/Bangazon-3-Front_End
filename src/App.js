@@ -29,11 +29,11 @@ export default class App extends Component {
     })
     }
 
-    // delete = (resource, evt) => {
-    // fetch(`${this.state.apiUrl}${resource}/${evt.target.id}`,{
-    //     method: `Delete`
-    // }).then(() => this.getAll(resource))
-    // }
+    delete = (resource, evt) => {
+    fetch(`${this.state.apiUrl}${resource}/${evt.target.id}`,{
+        method: `DELETE`
+    }).then(() => this.getAll(resource))
+    }
 
     // TODO: This API logic should end up in a manager of some sort
     getAll = (resource, keyword=null) => {
@@ -56,7 +56,7 @@ export default class App extends Component {
         return(
             <>
             <h1>Bangazon!</h1>
-            <OrderComponent orders={this.state.orders} getAll={this.getAll}/>
+            <OrderComponent orders={this.state.orders} getAll={this.getAll} delete={this.delete}/>
             </>
         )
     }
