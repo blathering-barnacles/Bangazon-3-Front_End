@@ -16,7 +16,8 @@ export default class App extends Component {
     products: [],
     orders: [],
     paymentTypes: [],
-    productTypes: []
+    productTypes: [],
+    apiUrl: "http://localhost:8000/api/v1/"
   }
 
   getAll = (resource) => {
@@ -37,7 +38,7 @@ export default class App extends Component {
       .then( newData => newData.json())
       .then( newData => {
         console.log("Added?", newData)
-        this.getTrainingPrograms(resource)
+        this.getAll(resource)
       })
     }
 
@@ -54,7 +55,7 @@ export default class App extends Component {
         body: formData
       })
       .then( newData => newData.json())
-      .then(() => this.getTrainingPrograms(resource))
+      .then(() => this.getAll(resource))
     }
 
 
