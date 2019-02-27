@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import OrderFormComponent from './order-form-component'
-import OrderComponent from './order-component'
+import OrderComponent from './order/order-component'
 // import './App.css';
 
 export default class App extends Component {
@@ -58,7 +57,6 @@ export default class App extends Component {
             <>
             <h1>Bangazon!</h1>
             <OrderComponent orders={this.state.orders} getAll={this.getAll}/>
-            <OrderFormComponent create={this.create} />
             </>
         )
     }
