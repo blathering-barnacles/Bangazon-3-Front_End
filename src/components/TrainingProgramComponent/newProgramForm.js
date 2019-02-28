@@ -19,7 +19,7 @@ export default class NewProgramForm extends Component {
     console.log(stateToChange)
   }
 
-  createNew = (resource, newObj) => {
+  createNewProgram = (resource, newObj) => {
     if(newObj.name === "") {
       alert("Program Must have a Name.")
     }
@@ -33,7 +33,7 @@ export default class NewProgramForm extends Component {
       alert("If no one is attending, why even bother?..")
     }
     else {
-      this.props.createNewProgram(resource, newObj)
+      this.props.createNew(resource, newObj)
     }
     }
 
@@ -58,7 +58,7 @@ render() {
       <input type="date" id="startDate" placeholder="Start Date" onChange={this.handleFieldChange}></input>
       <input type="date" id="endDate" placeholder="End Date" onChange={this.handleFieldChange}></input>
       <input type="text" id="maxAttendees" placeholder="Max limit of Attendees" onChange={this.handleFieldChange}></input>
-      <button onClick={() => {this.createNew("trainingPrograms", this.state)}}>Create New Program</button>
+      <button onClick={() => {this.createNewProgram("trainingPrograms", this.state)}}>Create New Program</button>
       {/* <button onClick={this.consoleLog}>console log</button> */}
 
     </React.Fragment>

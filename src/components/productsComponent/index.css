@@ -1,0 +1,53 @@
+
+
+
+.productsTitle {
+  text-align: center;
+}
+
+.newProductButton {
+  margin-left: 33px;
+}
+
+.newProductForm {
+  margin-left: 33px;
+  margin-bottom: 20px;
+}
+
+.editProductForm {
+  margin-left: 33px;
+  margin-bottom: 20px;
+}
+
+.product {
+  border: 3px solid black;
+  /* display: flex; */
+  width: 90%;
+  height: 50%;
+  margin-bottom: 3px;
+  margin-left: 4%;
+
+}
+
+.entryTitle {
+  margin-left: 3px;
+
+}
+
+.entryBody {
+  display: flex;
+  margin-top: -5px;
+}
+
+.productEntry {
+  margin-right: 3px;
+}
+
+.descriptionBox {
+  height: 100px;
+  width: 70%;
+  max-height: 100px;
+  min-height: 100px;
+  max-width: 90%;
+  min-width: 90%;
+}

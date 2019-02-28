@@ -1,6 +1,7 @@
 import { Route } from 'react-router-dom'
 import React, { Component } from "react"
 import Employee from './employee/employee-component'
+import Products from './productsComponent/index'
 import TrainingProgram from './TrainingProgramComponent/index'
 import APIManager from '../modules/APIManager';
 import OrderComponent from './order/order-component'
@@ -21,13 +22,13 @@ class ApplicationViews extends Component {
     productTypes: []
   }
 
+
   getAll = (resource) => {
     APIManager.getAll(resource)
       .then(data => this.setState({ [resource]: data }))
   }
 
-
-  createNewProgram = (resource, newObj) => {
+  createNew = (resource, newObj) => {
     APIManager.create(resource, newObj)
       .then((newData) => {
         console.log(newData)
@@ -36,8 +37,13 @@ class ApplicationViews extends Component {
   }
 
 
-  editThisProgram = (resource, obj, id) => {
+  editThis = (resource, obj, id) => {
     APIManager.edit(resource, obj, id)
+      .then(() => this.getAll(resource))
+  }
+
+  deleteThis = (resource, id) => {
+    APIManager.delete(resource, id)
       // .then(newData => newData.json())
       .then(() => this.getAll(resource))
   }
@@ -63,14 +69,14 @@ class ApplicationViews extends Component {
         }} />
         <Route exact path="/training-programs" render={(props) => {
           return (
-            <TrainingProgram
-              getTrainingPrograms={this.getTrainingPrograms}
-              trainingPrograms={this.state.trainingPrograms}
-              getAll={this.getAll}
-              createNewProgram={this.createNewProgram}
-              editThisProgram={this.editThisProgram}
-              deleteThisProgram={this.deleteThisProgram}
-            />)
+          <TrainingProgram
+            // getAll={this.getAll}
+            trainingPrograms={this.state.trainingPrograms}
+            getAll={this.getAll}
+            createNew={this.createNew}
+            editThis={this.editThis}
+            deleteThis={this.deleteThis}
+          />)
         }} />
         <Route exact path="/computers" render={(props) => {
           return <h1>Computers</h1>
@@ -90,7 +96,12 @@ class ApplicationViews extends Component {
           return <h1>Payment Types</h1>
         }} />
         <Route exact path="/products" render={(props) => {
-          return <h1>Products</h1>
+          return ( <Products getAll={this.getAll}
+            customers={this.state.customers}
+            productTypes={this.state.productTypes}
+            products={this.state.products}
+            createNew={this.createNew}
+            editThis={this.editThis}/>)
         }} />
         <Route exact path="/product-types" render={(props) => {
           return <h1>Product Types</h1>
