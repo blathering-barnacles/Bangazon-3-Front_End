@@ -37,7 +37,7 @@ export default class EditProgramForm extends Component {
   }
 
   editProgram = (resource, newObj, id) => {
-    this.props.edit(resource, newObj, id)
+    this.props.editThis(resource, newObj, id)
   }
 
   closeForm = () => {
@@ -58,7 +58,7 @@ render() {
 
   return (
     <React.Fragment>
-      <h2>Edit This Program <button onClick={this.closeForm}>Close Form</button></h2>
+      <h2>Edit {this.state.name} Program<button onClick={this.closeForm}>Close Form</button></h2>
       <input type="text" id="name" onChange={this.handleFieldChange} value={this.state.name}></input>
       <input type="date" id="startDate" onChange={this.handleFieldChange} value={this.state.startDate}></input>
       <input type="date" id="endDate"  onChange={this.handleFieldChange} value={this.state.endDate}></input>

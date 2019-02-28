@@ -2,6 +2,7 @@ import { Route } from 'react-router-dom'
 import React, { Component } from "react"
 import Employee from './employee/employee-component'
 import Products from './productsComponent/index'
+import TrainingProgram from './TrainingProgramComponent/index'
 import APIManager from '../modules/APIManager';
 
 
@@ -41,6 +42,12 @@ class ApplicationViews extends Component {
 
   deleteThis = (resource, id) => {
     APIManager.delete(resource, id)
+      // .then(newData => newData.json())
+      .then(() => this.getAll(resource))
+  }
+
+  deleteThisProgram = (resource, id) => {
+    APIManager.delete(resource, id)
     .then(() => this.getAll(resource))
   }
 
@@ -55,7 +62,15 @@ class ApplicationViews extends Component {
           return <h1>Departments</h1>
         }} />
         <Route exact path="/training-programs" render={(props) => {
-          return <h1>Training Programs</h1>
+          return (
+          <TrainingProgram
+            // getAll={this.getAll}
+            trainingPrograms={this.state.trainingPrograms}
+            getAll={this.getAll}
+            createNew={this.createNew}
+            editThis={this.editThis}
+            deleteThis={this.deleteThis}
+          />)
         }} />
         <Route exact path="/computers" render={(props) => {
           return <h1>Computers</h1>

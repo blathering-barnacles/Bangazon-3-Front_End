@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import APIManager from './modules/APIManager';
 import ApplicationViews from './components/ApplicationViews'
 
 
@@ -10,9 +9,10 @@ export default class App extends Component {
 
     return (
       <React.Fragment>
-        <h1>Bangazon!</h1>
+        <h1>Welcome to Bangazon!</h1>
         <ApplicationViews />
       </React.Fragment>
     )
   }
-}
+
+  }

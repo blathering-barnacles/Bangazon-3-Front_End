@@ -15,9 +15,10 @@ state = {
 }
 
 componentDidMount() {
-// this.props.getTrainingPrograms("trainingPrograms")
+this.props.getAll("trainingPrograms")
 
 }
+
 
 formSummoner = () => {
   this.setState({
@@ -77,23 +78,29 @@ if(this.state.newProgramButton === false && this.state.newProgramForm === false)
 
 if(this.state.newProgramButton && this.state.newProgramForm) {
 
-  newProgramForm = (<NewProgramForm className="newProgramForm"
-    create={this.props.create}
+  newProgramForm = (
+  <div className="newProgramForm" >
+  <NewProgramForm
+    createNew={this.props.createNew}
     formDestroyer={this.formDestroyer}
-    />)
+    />
+    </div>)
 } else {
   newProgramForm = null
 }
 
 if(this.state.editProgramButton && this.state.editProgramForm) {
 
-  editForm = (<EditProgramForm
-    edit={this.props.edit}
+  editForm = (
+  <div className="newProgramForm">
+  <EditProgramForm
+    editThis={this.props.editThis}
     formDestroyer={this.formDestroyer}
     editFormSummoner={this.editFormSummoner}
     selectedProgram={this.state.selectedProgram}
     updateState={this.updateState}
-  />)
+  />
+  </div>)
 
 } else {
   editForm = null
@@ -105,15 +112,16 @@ return(
   <h1 className="trainingProgramsTitle" >Training Programs</h1>
   {/* <button onClick={this.consoleLog}>Console Log</button> */}
 
-  <TrainingProgramItem
-  trainingPrograms={this.props.trainingPrograms}
-  create={this.props.create}
-  editFormSummoner={this.editFormSummoner}
-  />
-
-  {newProgramButton}
   {newProgramForm}
   {editForm}
+  {newProgramButton}
+  <TrainingProgramItem
+  trainingPrograms={this.props.trainingPrograms}
+  createNew={this.props.createNew}
+  editFormSummoner={this.editFormSummoner}
+  deleteThis={this.props.deleteThis}
+  />
+
 
 
 </React.Fragment>

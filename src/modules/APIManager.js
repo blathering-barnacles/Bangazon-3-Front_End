@@ -3,15 +3,18 @@ const apiUrl = 'http://127.0.0.1:8000/api/v1/'
 class APIManager {
 
 
-  getAll = (resource) => {
+  getAll = (resource, keyword=null) => {
     let url = `${apiUrl}${resource}/`
-
+    if(keyword) {
+          url+=keyword
+        }
     return fetch(url)
-    .then(response => response.json())
+    .then(data => data.json())
     .catch(err => console.log("oops!", err))
   }
 
-  getSingle = (resource, id, stateToSet) => {
+
+  getSingle = (resource, id, apiUrl, stateToSet) => {
     let url = `${apiUrl}${resource}/${id}`
     fetch(url)
     .then(response => response.json())
