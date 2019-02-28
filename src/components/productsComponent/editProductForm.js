@@ -65,8 +65,9 @@ render() {
       <input type="text" id="description"  onChange={this.handleFieldChange} value={this.state.description}></input>
       <input type="text" id="price"  onChange={this.handleFieldChange} value={this.state.price}></input>
       <input type="text" id="quantity"  onChange={this.handleFieldChange} value={this.state.price}></input>
+      <textarea type="textarea" id="description" className="descriptionBox" onChange={this.handleFieldChange} value={this.state.description}></textarea>
       <button onClick={() => {this.editProduct("products", this.state, this.props.selectedProduct.id)}}>Submit Changes</button>
-      <button onClick={this.consoleLog}>console log</button>
+      {/* <button onClick={this.consoleLog}>console log</button> */}
 
     </React.Fragment>
   )

@@ -78,26 +78,31 @@ if(this.state.newProductButton === false && this.state.newProductForm === false)
 
 if(this.state.newProductButton && this.state.newProductForm) {
 
-  newProductForm = (<NewProductForm className="newProductForm"
+  newProductForm = (
+  <div className="newProductForm"><NewProductForm className="newProductForm"
     createNew={this.props.createNew}
     formDestroyer={this.formDestroyer}
     getAll={this.props.getAll}
     customers={this.props.customers}
     productTypes={this.props.productTypes}
-    />)
+    />
+    </div>
+    )
 } else {
   newProductForm = null
 }
 
 if(this.state.editProductButton && this.state.editProductForm) {
 
-  editForm = (<EditProductForm
+  editForm = (
+    <div className="editProductForm"><EditProductForm
     editThis={this.props.editThis}
     formDestroyer={this.formDestroyer}
     editFormSummoner={this.editFormSummoner}
     selectedProduct={this.state.selectedProduct}
     updateState={this.updateState}
-  />)
+  />
+  </div>)
 
 } else {
   editForm = null

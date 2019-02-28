@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './index.css'
 
 
 export default class NewProductForm extends Component {
@@ -92,9 +93,9 @@ render() {
       )
       }
       </select>
-      <textarea id="description" placeholder="description" onChange={this.handleFieldChange}></textarea>
+      <textarea id="description" className="descriptionBox" placeholder="description" onChange={this.handleFieldChange}></textarea>
       <button onClick={() => {this.createNewProduct("products", this.state)}}>Create New Product</button>
-      <button onClick={this.consoleLog}>console log</button>
+      {/* <button onClick={this.consoleLog}>console log</button> */}
 
     </React.Fragment>
   )
