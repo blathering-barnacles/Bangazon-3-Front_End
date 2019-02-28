@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
 import CustomerComponent from './components/customers-component'
 import SearchComponent from './components/search-component'
-import CustomerFormComponent from './'
+import CustomerFormComponent from './components/customer-form-component'
 import './App.css'
+import APIManager from './modules/APIManager'
+import Employee from './components/employee/employee-component'
+
 
 export default class App extends Component {
 
-
-    state = {
-      customers: [],
-      apiUrl: 'http://127.0.0.1:8000/api/v1/'
-    }
+  state = {
+    employees: [],
+    departments: [],
+    computers: [],
+    trainingPrograms: [],
+    customers: [],
+    products: [],
+    orders: [],
+    paymentTypes: [],
+    productTypes: []
+  }
   
     setCustomerState = (customers) => this.setState({customers})
   
@@ -20,7 +29,7 @@ export default class App extends Component {
         formData.append(key, newObj[key])
       }
   
-      fetch(`${this.state.apiUrl}${resource}/`, {
+      fetch(`http://127.0.0.1:8000/api/v1/${resource}/`, {
         method: 'POST',
         body: formData
       })
@@ -31,25 +40,11 @@ export default class App extends Component {
       })
     }
   
-    // TODO: This API logic should end up in a manager of some sort
-    getAll = (resource, keyword=null) => {
-      let url = `${this.state.apiUrl}${resource}/`
-      if (keyword)
-        url += keyword
-  
-      fetch(url)
-      .then( response => response.json())
-      .then( data => {
-        console.log("customer list", data)
-        this.setState({[resource]: data})
-      })
-      .catch(err => console.log("Uh Oh!", err))
+    getAll = (resource) => {
+      APIManager.getAll(resource)
+        .then(data => this.setState({ [resource]: data }))
     }
-  
-    search = (resource, keyword) => {
-      let query = `?search=${keyword}`
-      this.getAll(resource, query)
-    }
+
   
     render() {
       return (
@@ -63,3 +58,17 @@ export default class App extends Component {
     }
   }
   
+
+
+  // render() {
+
+  //   return (
+  //     <React.Fragment>
+  //       <h1>Bangazon!</h1>
+  //       <Employee getAll={this.getAll} employees={this.state.employees} />
+  //     </React.Fragment>
+  //   )
+
+
+  // }
+
