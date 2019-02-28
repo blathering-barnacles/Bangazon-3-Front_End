@@ -45,7 +45,7 @@ export default class ProductItem extends Component {
         <div key={this.props.product.id} className="product">
           <p>{this.state.category.name}</p>
           <div className="entryTitle">
-            <p className="productEntry">{this.props.product.title} <button onClick={() => { this.props.editFormSummoner(this.props.product) }}>Edit</button></p>
+            <p className="productEntry">{this.props.product.title} <button onClick={() => this.props.editFormSummoner(this.props.product)}>Edit</button></p>
           </div>
           <div className="entryBody">
             <p>Location: </p>

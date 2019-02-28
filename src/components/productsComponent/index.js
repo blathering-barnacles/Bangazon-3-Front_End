@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ProductItem from './productItem'
 import NewProductForm from './newProductForm'
-// import EditProductForm from './editProductForm'
+import EditProductForm from './editProductForm'
 import './index.css'
 
 export default class Products extends Component {
@@ -26,15 +26,16 @@ formSummoner = () => {
     editProductButton: false,
     selectedProduct: {}
   })
+  console.log("HI")
 }
 
-editFormSummoner = (Product) => {
+editFormSummoner = (product) => {
   this.setState({
     editProductButton: true,
     newProductButton: false,
     editProductForm: true,
     newProductForm: false,
-    selectedProduct: Product
+    selectedProduct: product
   })
 }
 
@@ -63,9 +64,9 @@ updateState = () => {
 render(){
 
 
-  let newProductButton = ""
+let newProductButton = ""
 let newProductForm = ""
-// let editForm = ""
+let editForm = ""
 
 
 if(this.state.newProductButton === false && this.state.newProductForm === false) {
@@ -80,24 +81,27 @@ if(this.state.newProductButton && this.state.newProductForm) {
   newProductForm = (<NewProductForm className="newProductForm"
     createNew={this.props.createNew}
     formDestroyer={this.formDestroyer}
+    getAll={this.props.getAll}
+    customers={this.props.customers}
+    productTypes={this.props.productTypes}
     />)
 } else {
   newProductForm = null
 }
 
-// if(this.state.editProductButton && this.state.editProductForm) {
+if(this.state.editProductButton && this.state.editProductForm) {
 
-//   editForm = (<EditProductForm
-//     edit={this.props.edit}
-//     formDestroyer={this.formDestroyer}
-//     editFormSummoner={this.editFormSummoner}
-//     selectedProduct={this.state.selectedProduct}
-//     updateState={this.updateState}
-//   />)
+  editForm = (<EditProductForm
+    editThis={this.props.editThis}
+    formDestroyer={this.formDestroyer}
+    editFormSummoner={this.editFormSummoner}
+    selectedProduct={this.state.selectedProduct}
+    updateState={this.updateState}
+  />)
 
-// } else {
-//   editForm = null
-// }
+} else {
+  editForm = null
+}
 
 let productItem = this.props.products.map(product => {
 return (
@@ -105,6 +109,7 @@ return (
   products={this.props.products}
   create={this.props.create}
   product={product}
+  editFormSummoner={this.editFormSummoner}
   />
 
 )
@@ -116,17 +121,11 @@ return(
   <h1 className="productsTitle" >Products</h1>
   {/* <button onClick={this.consoleLog}>Console Log</button> */}
 
-  {/* <ProductItem
-  products={this.props.products}
-  create={this.props.create}
-  // editFormSummoner={this.editFormSummoner}
-  /> */}
-
+  {editForm}
   {newProductForm}
   {newProductButton}
   {productItem}
 
-  {/* {editForm} */}
 
 
 </React.Fragment>

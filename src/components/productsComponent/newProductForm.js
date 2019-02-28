@@ -13,11 +13,13 @@ export default class NewProductForm extends Component {
     dateAdded: "",
     deletedOn: "",
     productType: "",
-    seller: ""
+    seller: "",
   }
 
   componentDidMount = () => {
     this.makeDate()
+    this.props.getAll("customers")
+    this.props.getAll("productTypes")
   }
 
   handleFieldChange = (event) => {
@@ -26,11 +28,6 @@ export default class NewProductForm extends Component {
     this.setState(stateToChange)
     console.log(stateToChange)
   }
-
-  getCustomers = () => {
-
-  }
-
 
   createNewProduct = (resource, newObj) => {
     this.props.createNew(resource, newObj)
@@ -46,6 +43,8 @@ export default class NewProductForm extends Component {
     console.log(this.state.endDate)
     console.log(this.state.maxAttendees)
     console.log(this.state.dateAdded)
+    console.log("CUSTOMERS: ", this.state.customer)
+    console.log("PROPS CUST: ", this.props.customers)
   }
 
 
@@ -70,8 +69,6 @@ export default class NewProductForm extends Component {
   this.setState({
     dateAdded: today
   })
-  // console.log("DATE ADDED", this.state.dateAdded)
-
   }
 
 render() {
@@ -83,8 +80,18 @@ render() {
       <input type="text" id="location" placeholder="location" onChange={this.handleFieldChange}></input>
       <input type="text" id="price" placeholder="price" onChange={this.handleFieldChange}></input>
       <input type="text" id="quantity" placeholder="quantity" onChange={this.handleFieldChange}></input>
-      <input type="text" id="productType" placeholder="product category" onChange={this.handleFieldChange}></input>
-      <input type="text" id="seller" placeholder="who is selling?" onChange={this.handleFieldChange}></input>
+      <select type="text" id="productType" placeholder="product category" onChange={this.handleFieldChange}>
+      { this.props.productTypes.map( category =>
+      <option value={category.url}>{category.name}</option>
+      )
+      }
+      </select>
+      <select type="text" id="seller" placeholder="who is selling?" onChange={this.handleFieldChange}>
+      { this.props.customers.map( customer =>
+      <option value={customer.url}>{customer.firstName}</option>
+      )
+      }
+      </select>
       <textarea id="description" placeholder="description" onChange={this.handleFieldChange}></textarea>
       <button onClick={() => {this.createNewProduct("products", this.state)}}>Create New Product</button>
       <button onClick={this.consoleLog}>console log</button>

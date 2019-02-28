@@ -49,7 +49,7 @@ export default class App extends Component {
       <React.Fragment>
         <h1>Bangazon!</h1>
         <Employee getAll={this.getAll} employees={this.state.employees} />
-        <Products getAll={this.getAll} products={this.state.products} createNew={this.createNew} editThis={this.editThis}/>
+        <Products getAll={this.getAll} customers={this.state.customers} productTypes={this.state.productTypes} products={this.state.products} createNew={this.createNew} editThis={this.editThis}/>
       </React.Fragment>
     )
 
