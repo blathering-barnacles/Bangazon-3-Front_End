@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import OrderItem from "../order-item"
+import APIManager from '../../../modules/APIManager';
 
 export default class OrderComponent extends Component {
 

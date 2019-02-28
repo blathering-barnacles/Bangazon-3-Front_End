@@ -19,8 +19,6 @@ class APIManager {
       this.setState({[stateToSet]: data})
     })
   }
-
-
 }
 
 export default new APIManager()

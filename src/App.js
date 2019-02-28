@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import OrderComponent from './components/order/order-component'
-// import DepartmentComponent from './components/department/department-component'
+import DepartmentComponent from './components/department/department-component'
 // import DepartmentFormComponent from './components/department/department-form-component'
 // import './App.css';
 import APIManager from './modules/APIManager';
@@ -44,11 +44,11 @@ export default class App extends Component {
   })
   }
 
-delete = (resource, evt) => {
-  fetch(`${this.state.apiUrl}${resource}/${evt.target.id}`,{
-      method: `DELETE`
-  }).then(() => this.getAll(resource))
-  }
+  delete = (resource, evt) => {
+    fetch(`${this.state.apiUrl}${resource}/${evt.target.id}`,{
+        method: `DELETE`
+    }).then(() => this.getAll(resource))
+    }
 
 
 
@@ -60,6 +60,7 @@ delete = (resource, evt) => {
             <h1>Bangazon!</h1>
             <Employee getAll={this.getAll} employees={this.state.employees} />
             <OrderComponent orders={this.state.orders} getAll={this.getAll} delete={this.delete}/>
+            <DepartmentComponent departments={this.state.departments} getAll={this.getAll}/>
             </>
         )
     }
