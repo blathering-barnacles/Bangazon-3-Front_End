@@ -1,4 +1,4 @@
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import React, { Component } from "react"
 import Employee from './employee/employee-component'
 import APIManager from '../modules/APIManager';
@@ -31,35 +31,29 @@ class ApplicationViews extends Component {
           return <Employee getAll={this.getAll} employees={this.state.employees} />
         }} />
         <Route exact path="/departments" render={(props) => {
-          return <p>Departments</p>
+          return <h1>Departments</h1>
         }} />
         <Route exact path="/training-programs" render={(props) => {
-          return <p>Training Programs</p>
+          return <h1>Training Programs</h1>
         }} />
         <Route exact path="/computers" render={(props) => {
-          return <p>Computers</p>
+          return <h1>Computers</h1>
         }} />
         <Route exact path="/customers" render={(props) => {
-          return <p>Customers</p>
+          return <h1>Customers</h1>
         }} />
         <Route exact path="/orders" render={(props) => {
-          return <p>Order</p>
+          return <h1>Order</h1>
         }} />
         <Route exact path="/payment-types" render={(props) => {
-          return <p>Payment Types</p>
+          return <h1>Payment Types</h1>
         }} />
         <Route exact path="/products" render={(props) => {
-          return <p>Products</p>
+          return <h1>Products</h1>
         }} />
         <Route exact path="/product-types" render={(props) => {
-          return <p>Product Types</p>
+          return <h1>Product Types</h1>
         }} />
-
-
-
-
-
-
       </React.Fragment>
     )
   }

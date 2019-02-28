@@ -6,15 +6,10 @@ class Employee extends Component {
     this.props.getAll('employees')
   }
 
-  consoleLog = () => {
-    console.log(this.props.employees)
-  }
-
   render() {
     return (
       <div>
-        <button onClick={this.consoleLog}>Console Log</button>
-        <p>Employees!</p>
+        <h1>Employees</h1>
         <ul>
           {
             this.props.employees.map(employee => {
