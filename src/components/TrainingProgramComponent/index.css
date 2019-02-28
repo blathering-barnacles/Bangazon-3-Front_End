@@ -1,0 +1,37 @@
+
+.trainingProgramsTitle {
+  text-align: center;
+}
+
+.newProgramButton {
+  margin-left: 33px;
+}
+
+.newProgramForm {
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+.program {
+  border: 3px solid black;
+  /* display: flex; */
+  width: 90%;
+  height: 50%;
+  margin-bottom: 3px;
+  margin-left: 4%;
+
+}
+
+.entryTitle {
+  margin-left: 3px;
+
+}
+
+.entryBody {
+  display: flex;
+  margin-top: -5px;
+}
+
+.programEntry {
+  margin-right: 3px;
+}

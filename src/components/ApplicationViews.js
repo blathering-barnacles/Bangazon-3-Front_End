@@ -1,6 +1,7 @@
 import { Route } from 'react-router-dom'
 import React, { Component } from "react"
 import Employee from './employee/employee-component'
+import TrainingProgram from './TrainingProgramComponent/index'
 import APIManager from '../modules/APIManager';
 
 
@@ -23,6 +24,27 @@ class ApplicationViews extends Component {
       .then(data => this.setState({ [resource]: data }))
   }
 
+
+  createNewProgram = (resource, newObj) => {
+    APIManager.create(resource, newObj)
+    .then((newData) => {
+      console.log(newData)
+      this.getAll(resource)
+    })
+  }
+
+
+  editThisProgram = (resource, obj, id) => {
+    APIManager.edit(resource, obj, id)
+      // .then(newData => newData.json())
+      .then(() => this.getAll(resource))
+  }
+
+  deleteThisProgram = (resource, id) => {
+    APIManager.delete(resource, id)
+    .then(() => this.getAll(resource))
+  }
+
   render() {
 
     return (
@@ -34,7 +56,15 @@ class ApplicationViews extends Component {
           return <h1>Departments</h1>
         }} />
         <Route exact path="/training-programs" render={(props) => {
-          return <h1>Training Programs</h1>
+          return (
+          <TrainingProgram
+            getTrainingPrograms={this.getTrainingPrograms}
+            trainingPrograms={this.state.trainingPrograms}
+            getAll={this.getAll}
+            createNewProgram={this.createNewProgram}
+            editThisProgram={this.editThisProgram}
+            deleteThisProgram={this.deleteThisProgram}
+          />)
         }} />
         <Route exact path="/computers" render={(props) => {
           return <h1>Computers</h1>
