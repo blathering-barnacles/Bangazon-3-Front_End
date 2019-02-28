@@ -37,7 +37,7 @@ export default class EditProgramForm extends Component {
   }
 
   editProgram = (resource, newObj, id) => {
-    this.props.editThisProgram(resource, newObj, id)
+    this.props.editThis(resource, newObj, id)
   }
 
   closeForm = () => {

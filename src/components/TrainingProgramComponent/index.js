@@ -81,7 +81,7 @@ if(this.state.newProgramButton && this.state.newProgramForm) {
   newProgramForm = (
   <div className="newProgramForm" >
   <NewProgramForm
-    createNewProgram={this.props.createNewProgram}
+    createNew={this.props.createNew}
     formDestroyer={this.formDestroyer}
     />
     </div>)
@@ -94,7 +94,7 @@ if(this.state.editProgramButton && this.state.editProgramForm) {
   editForm = (
   <div className="newProgramForm">
   <EditProgramForm
-    editThisProgram={this.props.editThisProgram}
+    editThis={this.props.editThis}
     formDestroyer={this.formDestroyer}
     editFormSummoner={this.editFormSummoner}
     selectedProgram={this.state.selectedProgram}
@@ -117,9 +117,9 @@ return(
   {newProgramButton}
   <TrainingProgramItem
   trainingPrograms={this.props.trainingPrograms}
-  createNewProgram={this.props.createNewProgram}
+  createNew={this.props.createNew}
   editFormSummoner={this.editFormSummoner}
-  deleteThisProgram={this.props.deleteThisProgram}
+  deleteThis={this.props.deleteThis}
   />
 
 
