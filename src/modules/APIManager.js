@@ -52,7 +52,6 @@ class APIManager {
   }
 
   delete = (resource, id) => {
-
   return fetch(`${apiUrl}${resource}/${id}/`, {
     method: 'DELETE',
    })
