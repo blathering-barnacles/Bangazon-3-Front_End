@@ -45,9 +45,6 @@ export default class App extends Component {
 
 
 
-
-  render() {
-
   render() {
 
     return (
@@ -64,6 +61,6 @@ export default class App extends Component {
         />
       </React.Fragment>
     )
-
+  }
 
   }
