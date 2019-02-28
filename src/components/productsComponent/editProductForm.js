@@ -62,7 +62,6 @@ render() {
       <h2>Edit This Product <button onClick={this.closeForm}>Close Form</button></h2>
       <input type="text" id="title" onChange={this.handleFieldChange} value={this.state.title}></input>
       <input type="text" id="location" onChange={this.handleFieldChange} value={this.state.location}></input>
-      <input type="text" id="description"  onChange={this.handleFieldChange} value={this.state.description}></input>
       <input type="text" id="price"  onChange={this.handleFieldChange} value={this.state.price}></input>
       <input type="text" id="quantity"  onChange={this.handleFieldChange} value={this.state.price}></input>
       <textarea type="textarea" id="description" className="descriptionBox" onChange={this.handleFieldChange} value={this.state.description}></textarea>
