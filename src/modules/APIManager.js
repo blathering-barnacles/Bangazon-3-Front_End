@@ -20,6 +20,44 @@ class APIManager {
     })
   }
 
+  create = (resource, newObj) => {
+    let formData = new FormData()
+    for ( let key in newObj ) {
+      formData.append(key, newObj[key])
+    }
+
+    return fetch(`${apiUrl}${resource}/`, {
+      method: 'POST',
+      body: formData
+    })
+    .then( newData => newData.json())
+  }
+
+
+  edit = (resource, newObj, id) => {
+
+    let formData = new FormData()
+    for ( let key in newObj ) {
+      formData.append(key, newObj[key])
+    }
+
+    return fetch(`${apiUrl}${resource}/${id}/`, {
+      method: 'PATCH',
+      body: formData
+    })
+    .then( newData => newData.json())
+  }
+
+  delete = (resource, id) => {
+
+  return fetch(`${apiUrl}${resource}/${id}/`, {
+    method: 'DELETE',
+   })
+
+
+  }
+
+
 
 }
 

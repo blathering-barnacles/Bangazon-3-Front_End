@@ -23,6 +23,25 @@ export default class App extends Component {
       .then(data => this.setState({ [resource]: data }))
   }
 
+  createNew = (resource, newObj) => {
+    APIManager.create(resource, newObj)
+    .then((newData) => {
+      console.log(newData)
+      this.getAll(resource)
+    })
+  }
+
+
+  editThis = (resource, obj, id) => {
+    APIManager.edit(resource, obj, id)
+      .then(() => this.getAll(resource))
+  }
+
+  deleteThis = (resource, id) => {
+    APIManager.delete(resource, id)
+    .then(() => this.getAll(resource))
+  }
+
 
   render() {
 
@@ -30,7 +49,7 @@ export default class App extends Component {
       <React.Fragment>
         <h1>Bangazon!</h1>
         <Employee getAll={this.getAll} employees={this.state.employees} />
-        <Products getAll={this.getAll} products={this.state.products}/>
+        <Products getAll={this.getAll} products={this.state.products} createNew={this.createNew} editThis={this.editThis}/>
       </React.Fragment>
     )
 
