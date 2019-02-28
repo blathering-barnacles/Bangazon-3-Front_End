@@ -7,6 +7,7 @@ class SearchComponent extends Component {
 
   searchCustomers = () => {
     this.props.search("customers", this.state.keyword)
+    console.log(this.state.keyword)
   }
 
   setKeyword = (event) => {

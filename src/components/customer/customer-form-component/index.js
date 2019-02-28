@@ -50,7 +50,7 @@ class CustomerFormComponent extends Component {
           placeholder="Customers phone number"
           onChange={this.handleFieldChange}
         />
-        <button onClick={() => this.props.create("customers", this.state)}>
+        <button onClick={() => this.props.createNew("customers", this.state)}>
           add customer
         </button>
       </>
