@@ -19,7 +19,6 @@ this.props.getAll("trainingPrograms")
 
 }
 
-woop = () => {}
 
 formSummoner = () => {
   this.setState({
