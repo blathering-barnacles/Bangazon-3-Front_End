@@ -89,7 +89,7 @@ class ApplicationViews extends Component {
             <OrderComponent
               orders={this.state.orders}
               getAll={this.getAll}
-              delete={this.delete} />
+              delete={this.deleteThis} />
           )
         }} />
         <Route exact path="/payment-types" render={(props) => {

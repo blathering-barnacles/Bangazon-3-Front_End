@@ -32,7 +32,8 @@ export default class OrderItem extends Component {
     return (
       <>
         <li>Order #{this.props.order.id} {this.state.buyer.firstName} {this.state.buyer.lastName} {this.state.payment.name} {this.state.payment.cardNum}
-          <button key={`del-${this.props.order.id}`} id={this.props.order.id} onClick={evt => this.props.delete("orders", evt)}>Delete</button>
+          <button key={`del-${this.props.order.id}`} id={this.props.order.id} onClick={() => this.props.delete("orders", this.props.order.id)}>Delete</button>
+
         </li>
 
       </>
