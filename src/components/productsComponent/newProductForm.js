@@ -15,6 +15,7 @@ export default class NewProductForm extends Component {
     deletedOn: "",
     productType: "",
     seller: "",
+    defaultSelector: false,
   }
 
   componentDidMount = () => {
@@ -31,8 +32,28 @@ export default class NewProductForm extends Component {
   }
 
   createNewProduct = (resource, newObj) => {
-    this.props.createNew(resource, newObj)
-  }
+    if(newObj.title === "") {
+      alert("Product Must have a Name.")
+    }
+    else if(newObj.location === "") {
+      alert("Product needs a location.")
+    }
+    else if(newObj.price === ""){
+      alert("Product needs a price.")
+    }
+    else if(newObj.quantity === ""){
+      alert("Product needs a quantity.")
+    }
+    else if(newObj.seller === ""){
+      alert("Product needs a seller.")
+    }
+    else if(newObj.productType === "") {
+      alert("Product needs a category")
+    }
+    else {
+      this.props.createNew(resource, newObj)
+    }
+    }
 
   closeForm = () => {
     this.props.formDestroyer()
@@ -82,6 +103,7 @@ render() {
       <input type="text" id="price" placeholder="price" onChange={this.handleFieldChange}></input>
       <input type="text" id="quantity" placeholder="quantity" onChange={this.handleFieldChange}></input>
       <select type="text" id="productType" placeholder="product category" onChange={this.handleFieldChange}>
+      <option id="defaultSelector" >---------</option>
       { this.props.productTypes.map( category =>
       <option value={category.url}>{category.name}</option>
       )
@@ -94,7 +116,7 @@ render() {
       }
       </select>
       <textarea id="description" className="descriptionBox" placeholder="description" onChange={this.handleFieldChange}></textarea>
-      <button onClick={() => {this.createNewProduct("products", this.state)}}>Create New Product</button>
+      <button onClick={() => {this.createNewProduct("products", this.state)}}>Add this product</button>
       {/* <button onClick={this.consoleLog}>console log</button> */}
 
     </React.Fragment>

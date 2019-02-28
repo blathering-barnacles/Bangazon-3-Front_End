@@ -70,7 +70,7 @@ let editForm = ""
 
 
 if(this.state.newProductButton === false && this.state.newProductForm === false) {
-  newProductButton = (<button className="newProductButton" onClick={this.formSummoner}>Create New Training Product</button>)
+  newProductButton = (<button className="newProductButton" onClick={this.formSummoner}>Add New Product</button>)
 } else {
   newProductButton = null
 }
