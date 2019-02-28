@@ -1,0 +1,142 @@
+import React, { Component } from 'react'
+import ProductItem from './productItem'
+// import NewProgramForm from './newProgramForm'
+// import EditProgramForm from './editProgramForm'
+import './index.css'
+
+export default class Products extends Component {
+
+state = {
+  newProgramButton: false,
+  editProgramButton: false,
+  newProgramForm: false,
+  editProgramForm: false,
+  selectedProgram: {}
+}
+
+componentDidMount() {
+this.props.getAll("products")
+
+}
+
+formSummoner = () => {
+  this.setState({
+    newProgramButton: true,
+    newProgramForm: true,
+    editProgramButton: false,
+    selectedProgram: {}
+  })
+}
+
+editFormSummoner = (program) => {
+  this.setState({
+    editProgramButton: true,
+    newProgramButton: false,
+    editProgramForm: true,
+    newProgramForm: false,
+    selectedProgram: program
+  })
+}
+
+formDestroyer = () => {
+  this.setState({
+    newProgramButton: false,
+    newProgramForm: false,
+    editProgramButton: false,
+    selectedProgram: {}
+  })
+}
+
+
+consoleLog = () => {
+  console.log(this.state.selectedProgram)
+}
+
+updateState = () => {
+  this.setState({
+    editProgramButton: true,
+    editProgramForm: true
+  })
+}
+
+
+render(){
+
+
+// let newProgramForm = ""
+// let newProgramButton = ""
+// let editForm = ""
+
+
+// if(this.state.newProgramButton === false && this.state.newProgramForm === false) {
+//   newProgramButton = (<button className="newProgramButton" onClick={this.formSummoner}>Create New Training Program</button>)
+// } else {
+//   newProgramButton = null
+// }
+
+
+// if(this.state.newProgramButton && this.state.newProgramForm) {
+
+//   newProgramForm = (<NewProgramForm className="newProgramForm"
+//     create={this.props.create}
+//     formDestroyer={this.formDestroyer}
+//     />)
+// } else {
+//   newProgramForm = null
+// }
+
+// if(this.state.editProgramButton && this.state.editProgramForm) {
+
+//   editForm = (<EditProgramForm
+//     edit={this.props.edit}
+//     formDestroyer={this.formDestroyer}
+//     editFormSummoner={this.editFormSummoner}
+//     selectedProgram={this.state.selectedProgram}
+//     updateState={this.updateState}
+//   />)
+
+// } else {
+//   editForm = null
+// }
+
+let productItem = this.props.products.map(product => {
+return (
+  <ProductItem
+  products={this.props.products}
+  create={this.props.create}
+  product={product}
+  />
+
+)
+})
+
+
+return(
+<React.Fragment>
+  <h1 className="productsTitle" >Products</h1>
+  {/* <button onClick={this.consoleLog}>Console Log</button> */}
+
+  {/* <ProductItem
+  products={this.props.products}
+  create={this.props.create}
+  // editFormSummoner={this.editFormSummoner}
+  /> */}
+
+  {productItem}
+
+  {/* {newProgramButton}
+  {newProgramForm}
+  {editForm} */}
+
+
+</React.Fragment>
+
+)
+
+
+
+}
+
+
+
+}
