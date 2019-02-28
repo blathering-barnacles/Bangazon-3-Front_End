@@ -5,6 +5,8 @@ import Employee from './employee/employee-component'
 import Products from './productsComponent/index'
 import TrainingProgram from './TrainingProgramComponent/index'
 import APIManager from '../modules/APIManager';
+import OrderComponent from './order/order-component'
+import DepartmentComponent from './department/department-component'
 
 
 class ApplicationViews extends Component {
@@ -29,10 +31,10 @@ class ApplicationViews extends Component {
 
   createNew = (resource, newObj) => {
     APIManager.create(resource, newObj)
-    .then((newData) => {
-      console.log(newData)
-      this.getAll(resource)
-    })
+      .then((newData) => {
+        console.log(newData)
+        this.getAll(resource)
+      })
   }
 
 
@@ -49,7 +51,7 @@ class ApplicationViews extends Component {
 
   deleteThisProgram = (resource, id) => {
     APIManager.delete(resource, id)
-    .then(() => this.getAll(resource))
+      .then(() => this.getAll(resource))
   }
 
   render() {
@@ -61,7 +63,11 @@ class ApplicationViews extends Component {
           return <Employee getAll={this.getAll} employees={this.state.employees} />
         }} />
         <Route exact path="/departments" render={(props) => {
-          return <h1>Departments</h1>
+          return(
+            <DepartmentComponent
+            departments={this.state.departments}
+            getAll={this.getAll} />
+          )
         }} />
         <Route exact path="/training-programs" render={(props) => {
           return (
@@ -81,7 +87,12 @@ class ApplicationViews extends Component {
           return <h1>Customers</h1>
         }} />
         <Route exact path="/orders" render={(props) => {
-          return <h1>Order</h1>
+          return (
+            <OrderComponent
+              orders={this.state.orders}
+              getAll={this.getAll}
+              delete={this.deleteThis} />
+          )
         }} />
         <Route exact path="/payment-types" render={(props) => {
           return <h1>Payment Types</h1>
