@@ -1,5 +1,6 @@
 import { Route } from 'react-router-dom'
 import React, { Component } from "react"
+import NavBar from './nav/index'
 import Employee from './employee/employee-component'
 import TrainingProgram from './TrainingProgramComponent/index'
 import APIManager from '../modules/APIManager';
@@ -49,6 +50,7 @@ class ApplicationViews extends Component {
 
     return (
       <React.Fragment>
+        <NavBar />
         <Route exact path="/employees" render={(props) => {
           return <Employee getAll={this.getAll} employees={this.state.employees} />
         }} />
