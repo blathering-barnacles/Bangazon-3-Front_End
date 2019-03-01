@@ -66,23 +66,6 @@ class APIManager {
   }
 
 
-
-  create = (resource, newObj) => {
-    let formData = new FormData()
-    for (let key in newObj) {
-      formData.append(key, newObj[key])
-    }
-
-    fetch(`${apiUrl}${resource}/`, {
-        method: 'POST',
-        body: formData
-      })
-      .then(newData => newData.json())
-      .then(newData => {
-        console.log("added?", newData)
-        this.getAll(resource)
-      })
-  }
 }
 
 export default new APIManager()
