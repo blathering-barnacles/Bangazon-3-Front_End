@@ -7,6 +7,9 @@ import TrainingProgram from './TrainingProgramComponent/index'
 import APIManager from '../modules/APIManager';
 import OrderComponent from './order/order-component'
 import DepartmentComponent from './department/department-component'
+import CustomerComponent from './customer/customers-component'
+import SearchComponent from './customer/search-component'
+import CustomerFormComponent from './customer/customer-form-component'
 
 
 class ApplicationViews extends Component {
@@ -24,8 +27,8 @@ class ApplicationViews extends Component {
   }
 
 
-  getAll = (resource) => {
-    APIManager.getAll(resource)
+  getAll = (resource, keyword) => {
+    APIManager.getAll(resource, keyword)
       .then(data => this.setState({ [resource]: data }))
   }
 
@@ -53,6 +56,15 @@ class ApplicationViews extends Component {
     APIManager.delete(resource, id)
       .then(() => this.getAll(resource))
   }
+
+  search = (resource, keyword) => {
+    let query = `?search=${keyword}`
+    this.getAll(resource, query)
+  }
+
+  // searchCustomer = (resource, keyword) => {
+  //   APIManager.search(resource, keyword)
+  // }
 
   render() {
 
@@ -84,7 +96,14 @@ class ApplicationViews extends Component {
           return <h1>Computers</h1>
         }} />
         <Route exact path="/customers" render={(props) => {
-          return <h1>Customers</h1>
+             return (
+              <div className="App">
+                <h1>Our loyal customers</h1>
+                <SearchComponent search={this.search} />
+                <CustomerComponent customers={this.state.customers} getAll={this.getAll}/>
+                <CustomerFormComponent createNew={this.createNew} />
+              </div>
+            )
         }} />
         <Route exact path="/orders" render={(props) => {
           return (

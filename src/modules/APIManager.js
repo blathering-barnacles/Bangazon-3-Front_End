@@ -9,9 +9,15 @@ class APIManager {
           url+=keyword
         }
     return fetch(url)
-    .then(data => data.json())
-    .catch(err => console.log("oops!", err))
+      .then(response => response.json())
+      .catch(err => console.log("oops!", err))
   }
+
+
+  // search = (resource, keyword) => {
+  //   let query = `?search=${keyword}`
+  //   this.getAll(resource, query)
+  // }
 
 
   getSingle = (resource, id, apiUrl, stateToSet) => {
@@ -25,7 +31,7 @@ class APIManager {
 
   create = (resource, newObj) => {
     let formData = new FormData()
-    for ( let key in newObj ) {
+    for ( let key in newObj ) { 
       formData.append(key, newObj[key])
     }
 
@@ -58,7 +64,6 @@ class APIManager {
 
 
   }
-
 
 
 }
